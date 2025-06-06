@@ -58,21 +58,70 @@ async function loadQuestions() {
     questions[currentIndex].correct_answer
   );
 
+  console.log("Correct Answer Is: ", questions[currentIndex].correct_answer);
+
   questionNumber.innerHTML = `(${currentIndex + 1}/10)`;
-  questionTitle.innerHTML = await questions[currentIndex]?.question;
+  questionTitle.innerHTML = `Q: ${await questions[currentIndex]?.question}`;
   questionOptions.innerHTML = "";
   await questions[currentIndex].incorrect_answers.forEach((element) => {
     const li = document.createElement("li");
     questionOptions.appendChild(li);
     li.textContent = element;
+    li.classList.add("option");
+
+    li.addEventListener("click", () => {
+      const isCorrectAnswer = checkAnswer(element, currentIndex);
+
+      const allOptions = document.querySelectorAll("li");
+      allOptions.forEach((option) => {
+        option.style.pointerEvents = "none";
+      });
+
+      if (isCorrectAnswer) {
+        li.classList.add("right");
+        score += 1;
+      } else {
+        li.classList.add("wrong");
+
+        allOptions.forEach((option) => {
+          if (
+            option.textContent.trim() ==
+            decodeHTMLEntities(questions[currentIndex].correct_answer)
+          ) {
+            option.classList.add("right");
+          }
+        });
+      }
+
+      console.log(score);
+    });
   });
 }
 
-function nextQn() {
-  currentIndex += 1;
-  loadQuestions();
+function decodeHTMLEntities(text) {
+  const txt = document.createElement("textarea");
+  txt.innerText = text;
+  return txt.value;
 }
 
-setTimeout(() => {
-  localStorage.removeItem("username");
-}, 10000);
+function checkAnswer(givenAnswer, currentIndex) {
+  const isTrue = givenAnswer == questions[currentIndex].correct_answer;
+  return isTrue;
+}
+
+const showResult = () => {
+  console.log(`You Have Scored ${score * 10} Out Of 100`);
+};
+
+function nextQn() {
+  if (currentIndex < noOfQuestions - 1) {
+    currentIndex += 1;
+    loadQuestions();
+  } else {
+    showResult();
+  }
+}
+
+// setTimeout(() => {
+// localStorage.removeItem("username");
+// }, 10000);
