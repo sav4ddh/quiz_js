@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz app p/w by pepco.</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <link
       href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
       rel="stylesheet"
@@ -20,13 +20,27 @@
       </div>
       <div class="formElement inputElement">
         <label for="userName">Enter your username.</label>
-        <input type="text" name="userName" id="userName" />
+        <input
+          type="text"
+          name="userName"
+          id="userName"
+          onkeydown="return (event.keyCode!=13);"
+        />
+      </div>
+
+      <div class="formElement errorBox" id="formErrorBox">
+        <i class="bxr bxs-alert-triangle"></i>
+        <p>username cannot be empty</p>
       </div>
 
       <div class="formElement buttonElement">
-        <input type="submit" value="Play Quizz" />
+        <input
+          type="button"
+          onclick="validateForm(this.form)"
+          value="Play Quizz"
+        />
       </div>
     </form>
-    <script src="./app.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>
