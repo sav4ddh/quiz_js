@@ -1,0 +1,32 @@
+[
+  {
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hyperlinks and Text Markup Language",
+      "Hyper Text Markup Language",
+      "Home Tool Markup Language",
+      "Hyperlink Text Management Language"
+    ],
+    "correct": "Hyper Text Markup Language"
+  },
+  {
+    "question": "Which language is used for styling web pages?",
+    "options": ["HTML", "JQuery", "CSS", "XML"],
+    "correct": "CSS"
+  },
+  {
+    "question": "Which is not a JavaScript Framework?",
+    "options": ["Python Script", "JQuery", "Django", "NodeJS"],
+    "correct": "Django"
+  },
+  {
+    "question": "Which is used to connect to a database?",
+    "options": ["PHP", "HTML", "JS", "CSS"],
+    "correct": "PHP"
+  },
+  {
+    "question": "Inside which HTML element do we put the JavaScript?",
+    "options": ["<js>", "<scripting>", "<script>", "<javascript>"],
+    "correct": "<script>"
+  }
+]
