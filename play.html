@@ -11,7 +11,33 @@
     />
   </head>
   <body>
-    <h2 id="welcomeUser"></h2>
+    <main>
+      <div class="questionContainer">
+        <div class="timerAndTitle">
+          <h4 id="questionNumber">(01/10)</h4>
+          <p id="timeLeft">(Time Left: 30s)</p>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionTitle">
+            <h2 id="questionTitle">
+              <!-- Q: The asteroid belt is located between which two planets? -->
+            </h2>
+          </div>
+          <ul class="questionOptions" id="questionOptions">
+            <!-- <li>Jupitur and Saturn</li>
+            <li>Mercury and Venus</li>
+            <li>Mars and Jupitur</li>
+            <li>Earth and Mars</li> -->
+          </ul>
+        </div>
+
+        <div class="questionButtons">
+          <button onclick="nextQn()" id="nextQnButton">Next Question</button>
+        </div>
+      </div>
+      <footer>Made by sav4ddh.❤️</footer>
+    </main>
     <script src="./js/main.js"></script>
   </body>
 </html>

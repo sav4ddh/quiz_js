@@ -10,6 +10,83 @@
   display: none !important;
 }
 
+ul {
+  list-style: none;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 20%);
+}
+main footer {
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
+}
+main .questionContainer {
+  min-width: 350px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+main .questionContainer .timerAndTitle {
+  background: #00901f;
+  color: white;
+  font-weight: 500;
+  padding: 15px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+main .questionContainer .questionCard .questionTitle {
+  margin-bottom: 15px;
+}
+main .questionContainer .questionCard .questionTitle h2 {
+  font-weight: 400;
+  font-size: 20px;
+}
+main .questionContainer .questionCard .questionOptions li {
+  background: #efefef;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid rgba(159, 203, 48, 0.568627451);
+  font-size: 16px;
+  cursor: pointer;
+  padding-left: 15px;
+}
+main .questionContainer .questionCard .questionOptions li.selected {
+  background: rgba(48, 110, 203, 0.568627451);
+  color: white;
+}
+main .questionContainer .questionCard .questionOptions li.right {
+  background: #00901f;
+  border: 2px solid rgba(48, 110, 203, 0.568627451);
+  color: white;
+}
+main .questionContainer .questionCard .questionOptions li.wrong {
+  background: #dd0505;
+  border: 2px solid #dd0505;
+  color: white;
+}
+main .questionContainer .questionButtons {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+main .questionContainer .questionButtons button {
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  right: 0;
+  background: #00901f;
+  border: none;
+  color: white;
+  font-weight: 500;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -22,6 +99,12 @@ form {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   padding: 20px;
   font-size: 20px;
+}
+form footer {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+  font-size: 14px;
 }
 form .formElement {
   margin-bottom: 10px;

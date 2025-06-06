@@ -11,6 +11,93 @@
   display: none !important;
 }
 
+ul {
+  list-style: none;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 20%);
+
+  footer {
+    display: flex;
+    justify-content: start;
+    margin-top: 20px;
+  }
+
+  .questionContainer {
+    min-width: 350px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    padding: 10px;
+    .timerAndTitle {
+      background: #00901f;
+      color: white;
+      font-weight: 500;
+      padding: 15px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .questionCard {
+      .questionTitle {
+        margin-bottom: 15px;
+        h2 {
+          font-weight: 400;
+          font-size: 20px;
+        }
+      }
+
+      .questionOptions {
+        li {
+          background: #efefef;
+          margin-bottom: 10px;
+          padding: 10px;
+          border: 1px solid #9fcb3091;
+          font-size: 16px;
+          cursor: pointer;
+          padding-left: 15px;
+          &.selected {
+            background: #306ecb91;
+            color: white;
+          }
+
+          &.right {
+            background: #00901f;
+            border: 2px solid #306ecb91;
+            color: white;
+          }
+
+          &.wrong {
+            background: #dd0505;
+            border: 2px solid #dd0505;
+            color: white;
+          }
+        }
+      }
+    }
+    .questionButtons {
+      display: flex;
+      justify-content: end;
+      margin-top: 20px;
+      button {
+        width: 200px;
+        padding: 10px;
+        cursor: pointer;
+        right: 0;
+        background: #00901f;
+        border: none;
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -25,6 +112,13 @@ form {
   // border-radius: 12px;
   // border: 1px solid #14d53e;
   font-size: 20px;
+
+  footer {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    font-size: 14px;
+  }
 
   .formElement {
     margin-bottom: 10px;

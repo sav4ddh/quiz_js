@@ -1,6 +1,17 @@
 const username = localStorage.getItem("username");
 const welcomeUser = document.getElementById("welcomeUser");
 
+const questionNumber = document.getElementById("questionNumber");
+const timeLeft = document.getElementById("timeLeft");
+const questionTitle = document.getElementById("questionTitle");
+const questionOptions = document.getElementById("questionOptions");
+const nextQnButton = document.getElementById("nextQnButton");
+
+let questions = [];
+let currentIndex = 0;
+let noOfQuestions = 10;
+let score = 0;
+
 const getDomainUrl = () => {
   try {
     const urlObject = new URL(window.location.href);
@@ -14,4 +25,54 @@ if (!username) {
   window.location.href = `http://${getDomainUrl()}/index.html`;
 }
 
-welcomeUser.innerHTML = `Welcome ${username}`;
+async function getQuestions() {
+  const url =
+    "https://opentdb.com/api.php?amount=100&category=17&difficulty=easy&type=multiple";
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      getQuestions();
+    }
+
+    const data = await response.json();
+    questions = await data.results;
+    console.log(data.results);
+
+    loadQuestions();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getQuestions();
+
+async function loadQuestions() {
+  const randomIndex = Math.floor(
+    Math.random() * questions[currentIndex].incorrect_answers.length
+  );
+  questions[currentIndex].incorrect_answers.splice(
+    randomIndex,
+    0,
+    questions[currentIndex].correct_answer
+  );
+
+  questionNumber.innerHTML = `(${currentIndex + 1}/10)`;
+  questionTitle.innerHTML = await questions[currentIndex]?.question;
+  questionOptions.innerHTML = "";
+  await questions[currentIndex].incorrect_answers.forEach((element) => {
+    const li = document.createElement("li");
+    questionOptions.appendChild(li);
+    li.textContent = element;
+  });
+}
+
+function nextQn() {
+  currentIndex += 1;
+  loadQuestions();
+}
+
+setTimeout(() => {
+  localStorage.removeItem("username");
+}, 10000);
