@@ -15,6 +15,8 @@ let currentIndex = 0;
 let noOfQuestions = 10;
 let score = 0;
 let showNextQn = false;
+let currentSecond = 10;
+let timerID = null;
 
 const getDomainUrl = () => {
   try {
@@ -45,11 +47,10 @@ async function getQuestions() {
 
     const data = await response.json();
     questions = await data.results;
-    console.log(data.results);
 
     loadQuestions();
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 
@@ -65,7 +66,7 @@ async function loadQuestions() {
     questions[currentIndex].correct_answer
   );
 
-  console.log("Correct Answer Is: ", questions[currentIndex].correct_answer);
+  // console.log("Correct Answer Is: ", questions[currentIndex].correct_answer);
 
   if (currentIndex === 9) {
     nextQnButton.innerHTML = "Submit & View Score.";
@@ -76,6 +77,28 @@ async function loadQuestions() {
   questionOptions.innerHTML = "";
   questionPopUp.classList.remove("hide");
   loadingQuestionPopUp.classList.add("hide");
+
+  clearInterval(timerID);
+  timerID = setInterval(() => {
+    currentSecond -= 1;
+    timeLeft.innerHTML = `(Time Left: ${currentSecond}s)`;
+
+    if (currentSecond <= 0) {
+      clearInterval(timerID);
+      if (!showNextQn) {
+        alert("Time is up!!");
+        const allOptions = document.querySelectorAll("li.option");
+        if (allOptions.length > 0) {
+          const randomOption =
+            allOptions[Math.floor(Math.random() * allOptions.length)];
+          // console.log(randomOption);
+
+          randomOption.click();
+        }
+      }
+    }
+  }, 1000);
+
   await questions[currentIndex].incorrect_answers.forEach((element) => {
     const li = document.createElement("li");
     questionOptions.appendChild(li);
@@ -107,7 +130,7 @@ async function loadQuestions() {
         });
       }
 
-      console.log(score);
+      // console.log(score);
     });
   });
 }
@@ -129,15 +152,15 @@ const refreshQuiz = (removeUser) => {
 };
 
 const showResult = () => {
-  console.log(scoreResultContainer);
+  // console.log(scoreResultContainer);
 
   scoreResultContainer.classList.remove("hide");
   questionPopUp.classList.add("hide");
-  console.log("helllo");
+  // console.log("helllo");
 
   scoreResultContainer.innerHTML = `
     <div class="score">
-      <p class="scorePercentage" id="scorePercentage">${score * 10}</p>
+      <p class="scorePercentage" id="scorePercentage">${score * 10}/100</p>
       <p>(${score} out of 10 Qns Corrected.)</p>
     </div>
     <h2>Congragulations, ${username}!! 🎉</h2>
@@ -148,13 +171,14 @@ const showResult = () => {
     <p class="clearAndRestart" onclick="refreshQuiz(true)">Try again with another username</p>
   `;
 
-  console.log(`You Have Scored ${score * 10} Out Of 100`);
+  // console.log(`You Have Scored ${score * 10} Out Of 100`);
 };
 
 function nextQn() {
   if (currentIndex < noOfQuestions - 1 && showNextQn === true) {
     showNextQn = false;
     currentIndex += 1;
+    currentSecond = 11;
     loadQuestions();
   } else if (!showNextQn) {
     alert("You Should Choose Any One Option :)");
@@ -162,7 +186,3 @@ function nextQn() {
     showResult();
   }
 }
-
-// setTimeout(() => {
-// localStorage.removeItem("username");
-// }, 10000);
