@@ -30,6 +30,24 @@ main .questionContainer {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
 }
+main .questionContainer .loadingQuestionPopUp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 300px;
+  text-transform: capitalize;
+  color: #00901f;
+}
+main .questionContainer .loadingQuestionPopUp i {
+  font-size: 50px;
+  animation: rotater360 3s linear infinite;
+  margin-bottom: 20px;
+}
+main .questionContainer .loadingQuestionPopUp p {
+  margin-bottom: 10px;
+}
 main .questionContainer .timerAndTitle {
   background: #00901f;
   color: white;
@@ -164,4 +182,13 @@ form .formElement.buttonElement input {
 form .formElement.buttonElement input:hover, form .formElement.buttonElement input:active {
   border: 2px solid #00901f;
   cursor: pointer;
+}
+
+@keyframes rotater360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=styles.css.map */

@@ -31,6 +31,27 @@ main {
     width: 350px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+    .loadingQuestionPopUp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      min-height: 300px;
+      text-transform: capitalize;
+      color: #00901f;
+
+      i {
+        font-size: 50px;
+        animation: rotater360 3s linear infinite;
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+
     padding: 10px;
     .timerAndTitle {
       background: #00901f;
@@ -189,5 +210,14 @@ form {
         }
       }
     }
+  }
+}
+
+@keyframes rotater360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

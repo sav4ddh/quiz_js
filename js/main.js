@@ -6,6 +6,8 @@ const timeLeft = document.getElementById("timeLeft");
 const questionTitle = document.getElementById("questionTitle");
 const questionOptions = document.getElementById("questionOptions");
 const nextQnButton = document.getElementById("nextQnButton");
+const questionPopUp = document.getElementById("questionPopUp");
+const loadingQuestionPopUp = document.getElementById("loadingQuestionPopUp");
 
 let questions = [];
 let currentIndex = 0;
@@ -26,6 +28,9 @@ if (!username) {
 }
 
 async function getQuestions() {
+  questionPopUp.classList.add("hide");
+  loadingQuestionPopUp.classList.remove("hide");
+
   const url =
     "https://opentdb.com/api.php?amount=100&category=17&difficulty=easy&type=multiple";
 
@@ -63,6 +68,8 @@ async function loadQuestions() {
   questionNumber.innerHTML = `(${currentIndex + 1}/10)`;
   questionTitle.innerHTML = `Q: ${await questions[currentIndex]?.question}`;
   questionOptions.innerHTML = "";
+  questionPopUp.classList.remove("hide");
+  loadingQuestionPopUp.classList.add("hide");
   await questions[currentIndex].incorrect_answers.forEach((element) => {
     const li = document.createElement("li");
     questionOptions.appendChild(li);
