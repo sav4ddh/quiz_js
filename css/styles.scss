@@ -31,6 +31,79 @@ main {
     width: 350px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+    .scoreResultContainer {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+
+      h2 {
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      .message {
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: gray;
+        margin-top: 5px;
+      }
+
+      .retryButton {
+        margin-top: 10px;
+        width: 200px;
+        padding: 10px;
+        cursor: pointer;
+        right: 0;
+        background: #00901f;
+        border: none;
+        color: white;
+        font-weight: 500;
+      }
+
+      .clearAndRestart {
+        font-size: 12px;
+        text-decoration: underline;
+        margin-top: 10px;
+        color: rgb(72, 71, 71);
+        cursor: pointer;
+      }
+
+      .score {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        p {
+          &.scorePercentage {
+            margin-top: 10px;
+            color: #00901f;
+            font-size: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // width: 100px;
+            // height: 100px;
+            // border: 6px solid #00901f;
+            margin-bottom: 10px;
+
+            span {
+              font-size: 20px;
+            }
+          }
+
+          font-size: 14px;
+          color: gray;
+        }
+      }
+    }
+
     .loadingQuestionPopUp {
       display: flex;
       align-items: center;

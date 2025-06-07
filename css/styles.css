@@ -30,6 +30,67 @@ main .questionContainer {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
 }
+main .questionContainer .scoreResultContainer {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+main .questionContainer .scoreResultContainer h2 {
+  font-weight: 400;
+  font-size: 18px;
+}
+main .questionContainer .scoreResultContainer .message {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: gray;
+  margin-top: 5px;
+}
+main .questionContainer .scoreResultContainer .retryButton {
+  margin-top: 10px;
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  right: 0;
+  background: #00901f;
+  border: none;
+  color: white;
+  font-weight: 500;
+}
+main .questionContainer .scoreResultContainer .clearAndRestart {
+  font-size: 12px;
+  text-decoration: underline;
+  margin-top: 10px;
+  color: rgb(72, 71, 71);
+  cursor: pointer;
+}
+main .questionContainer .scoreResultContainer .score {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+main .questionContainer .scoreResultContainer .score p {
+  font-size: 14px;
+  color: gray;
+}
+main .questionContainer .scoreResultContainer .score p.scorePercentage {
+  margin-top: 10px;
+  color: #00901f;
+  font-size: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+main .questionContainer .scoreResultContainer .score p.scorePercentage span {
+  font-size: 20px;
+}
 main .questionContainer .loadingQuestionPopUp {
   display: flex;
   align-items: center;

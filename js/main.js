@@ -8,11 +8,13 @@ const questionOptions = document.getElementById("questionOptions");
 const nextQnButton = document.getElementById("nextQnButton");
 const questionPopUp = document.getElementById("questionPopUp");
 const loadingQuestionPopUp = document.getElementById("loadingQuestionPopUp");
+const scoreResultContainer = document.getElementById("scoreResultContainer");
 
 let questions = [];
 let currentIndex = 0;
 let noOfQuestions = 10;
 let score = 0;
+let showNextQn = false;
 
 const getDomainUrl = () => {
   try {
@@ -65,6 +67,10 @@ async function loadQuestions() {
 
   console.log("Correct Answer Is: ", questions[currentIndex].correct_answer);
 
+  if (currentIndex === 9) {
+    nextQnButton.innerHTML = "Submit & View Score.";
+  }
+
   questionNumber.innerHTML = `(${currentIndex + 1}/10)`;
   questionTitle.innerHTML = `Q: ${await questions[currentIndex]?.question}`;
   questionOptions.innerHTML = "";
@@ -78,6 +84,7 @@ async function loadQuestions() {
 
     li.addEventListener("click", () => {
       const isCorrectAnswer = checkAnswer(element, currentIndex);
+      showNextQn = true;
 
       const allOptions = document.querySelectorAll("li");
       allOptions.forEach((option) => {
@@ -116,14 +123,41 @@ function checkAnswer(givenAnswer, currentIndex) {
   return isTrue;
 }
 
+const refreshQuiz = (removeUser) => {
+  if (removeUser) localStorage.removeItem("username");
+  window.location.reload();
+};
+
 const showResult = () => {
+  console.log(scoreResultContainer);
+
+  scoreResultContainer.classList.remove("hide");
+  questionPopUp.classList.add("hide");
+  console.log("helllo");
+
+  scoreResultContainer.innerHTML = `
+    <div class="score">
+      <p class="scorePercentage" id="scorePercentage">${score * 10}</p>
+      <p>(${score} out of 10 Qns Corrected.)</p>
+    </div>
+    <h2>Congragulations, ${username}!! 🎉</h2>
+    <p class="message">${
+      score >= 70 ? "Great Job! Try again" : "Keeps Improving. Try again."
+    }</p>
+    <button class="retryButton" onclick="refreshQuiz(false)">Try Again</button>
+    <p class="clearAndRestart" onclick="refreshQuiz(true)">Try again with another username</p>
+  `;
+
   console.log(`You Have Scored ${score * 10} Out Of 100`);
 };
 
 function nextQn() {
-  if (currentIndex < noOfQuestions - 1) {
+  if (currentIndex < noOfQuestions - 1 && showNextQn === true) {
+    showNextQn = false;
     currentIndex += 1;
     loadQuestions();
+  } else if (!showNextQn) {
+    alert("You Should Choose Any One Option :)");
   } else {
     showResult();
   }
