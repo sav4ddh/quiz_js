@@ -20,15 +20,19 @@ let timerID = null;
 
 const getDomainUrl = () => {
   try {
-    const urlObject = new URL(window.location.href);
-    return urlObject.host;
+    const url = new URL(window.location.href);
+    const pathParts = url.pathname.split("/");
+    pathParts.pop();
+    const basePath = pathParts.join("/") + "/";
+
+    return `${url.protocol}//${url.host}${basePath}`;
   } catch (error) {
     return null;
   }
 };
 
 if (!username) {
-  window.location.href = `http://${getDomainUrl()}/index.html`;
+  window.location.href = `http://${getDomainUrl()}index.html`;
 }
 
 async function getQuestions() {
