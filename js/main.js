@@ -19,7 +19,7 @@ let currentSecond = 10;
 let timerID = null;
 
 if (!username) {
-  window.location.href = `sav4ddh.github.io/quiz_js/index.html`;
+  window.location.href = `https://sav4ddh.github.io/quiz_js/index.html`;
 }
 
 async function getQuestions() {

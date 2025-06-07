@@ -1,24 +1,9 @@
 console.log("app started.!!");
 const formErrorBox = document.getElementById("formErrorBox");
 
-const getDomainUrl = () => {
-  const getDomainUrl = () => {
-    try {
-      const url = new URL(window.location.href);
-      const pathParts = url.pathname.split("/");
-      pathParts.pop();
-      const basePath = pathParts.join("/") + "/";
-
-      return `${url.protocol}//${url.host}${basePath}`;
-    } catch (error) {
-      return null;
-    }
-  };
-};
-
 const userNameFromLocalStorage = localStorage.getItem("username");
 if (userNameFromLocalStorage) {
-  window.location.href = `sav4ddh.github.io/quiz_js/play.html`;
+  window.location.href = `https://sav4ddh.github.io/quiz_js/play.html`;
 }
 
 const validateForm = (formData) => {
@@ -28,5 +13,5 @@ const validateForm = (formData) => {
   }
 
   localStorage.setItem("username", userName);
-  window.location.href = `sav4ddh.github.io/quiz_js/play.html`;
+  window.location.href = `https://sav4ddh.github.io/quiz_js/play.html`;
 };
