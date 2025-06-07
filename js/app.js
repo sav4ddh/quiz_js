@@ -18,7 +18,7 @@ const getDomainUrl = () => {
 
 const userNameFromLocalStorage = localStorage.getItem("username");
 if (userNameFromLocalStorage) {
-  window.location.href = `http://${getDomainUrl()}play.html`;
+  window.location.href = `sav4ddh.github.io/quiz_js/play.html`;
 }
 
 const validateForm = (formData) => {
@@ -28,5 +28,5 @@ const validateForm = (formData) => {
   }
 
   localStorage.setItem("username", userName);
-  window.location.href = `http://${getDomainUrl()}play.html`;
+  window.location.href = `sav4ddh.github.io/quiz_js/play.html`;
 };

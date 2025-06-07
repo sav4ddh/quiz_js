@@ -18,21 +18,8 @@ let showNextQn = false;
 let currentSecond = 10;
 let timerID = null;
 
-const getDomainUrl = () => {
-  try {
-    const url = new URL(window.location.href);
-    const pathParts = url.pathname.split("/");
-    pathParts.pop();
-    const basePath = pathParts.join("/") + "/";
-
-    return `${url.protocol}//${url.host}${basePath}`;
-  } catch (error) {
-    return null;
-  }
-};
-
 if (!username) {
-  window.location.href = `http://${getDomainUrl()}index.html`;
+  window.location.href = `sav4ddh.github.io/quiz_js/index.html`;
 }
 
 async function getQuestions() {
